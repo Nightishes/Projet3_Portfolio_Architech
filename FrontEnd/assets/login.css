@@ -1,0 +1,38 @@
+main > a{
+    text-decoration: underline;
+    color: black;
+}
+
+main{
+    text-align: center;
+}
+
+h2{
+    padding: 150px 0px 37px 0;
+}
+
+.form-login{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    text-align: left;
+}
+
+
+.input-credential{
+    background: #FFFFFF;
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+    width: 25em;
+    height: 3em;
+    margin: 10px 0 20px 0;
+    border: 0px white;
+}
+
+.cba{
+    padding: 10px;
+}
+
+footer{
+    margin-top: 30em;
+}
