@@ -1,5 +1,6 @@
 const apiWork = "http://localhost:5678/api/works";
 
+
 // Application bouton
 filterSelection("all")
 function filterSelection(c) {
@@ -39,15 +40,15 @@ function w3RemoveClass(element, name) {
 }
 
 // Add active class to the current control button (highlight it)
-var btnContainer = document.getElementById("btnFilters");
-var btns = btnContainer.getElementsByClassName("btn");
-console.log(btns);
-for (var i = 0; i < btns.length; i++) {
-  btns[i].addEventListener("click", function() {
-    var current = document.getElementsByClassName("active");
-    current[0].className = current[0].className.replace(" active", "");
-    this.className += " active";
-  });
+  var btnContainer = document.getElementById("btnFilters");
+  var btns = btnContainer.getElementsByClassName("btn");
+  console.log(btns);
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener("click", function() {
+      var current = document.getElementsByClassName("active");
+      current[0].className = current[0].className.replace(" active", "");
+      this.className += " active";
+    });
 }
 
 //appel fetch pour le portfolio
@@ -72,6 +73,24 @@ async function fetchWork(){
 }
 
 fetchWork();
+
+// vérification token utilisateur connecté
+
+function userLogged()
+{
+  // let cbaState = document.getElementsByClassName("cba-admin");
+    if (sessionStorage.getItem("token") == "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY3NTcwNTU2MCwiZXhwIjoxNjc1NzkxOTYwfQ.ofJF-UcRPInvrE_yOPzySON0h1Pc7v4xUWOxS18-Xww"){
+      // cbaState.className.replace("cba-admin-visible");
+      document.getElementById("cba-admin1").className = "cba-admin-visible";
+      document.getElementById("cba-admin2").className = "cba-admin-visible";
+      document.getElementById("cba-admin3").className = "cba-admin-visible";
+    }
+    else{
+      console.log("Utilisateur non connecté")
+    } 
+}
+
+userLogged();
 
 
 

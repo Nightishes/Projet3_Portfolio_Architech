@@ -102,13 +102,33 @@ nav li {
 li:hover {
 	color: #B1663C;
 }
+
+.cba-admin{
+	display: none;
+}
+
+.cba-admin-visible
+{
+	display: inline-block;
+}
+
 #introduction {
 	display: flex;
 	align-items: center;
 }
-#introduction figure {
+#introduction figure {	
 	flex: 1
 }
+
+figure .cba-admin{
+	margin: 1rem 1rem 1rem 3rem;
+}
+
+
+article .cba-admin{
+	padding: 0rem 0rem 3rem 0rem;
+}
+
 #introduction img {
 	display: block;
 	margin: auto;
