@@ -33,6 +33,14 @@ h2{
     padding: 10px;
 }
 
+.password-false{
+    visibility: hidden;
+}
+
+.password-false-display{
+    visibility: visible;
+}
+
 footer{
     margin-top: 30em;
 }

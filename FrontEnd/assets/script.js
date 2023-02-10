@@ -72,13 +72,33 @@ async function fetchWork(){
     })
 }
 
+//appel fetch pour la modale admin
+async function fetchWorkAdmin(){
+  const response = await fetch(apiWork);
+  const json = await response.json();
+  console.log(json);
+
+  json.forEach(data => {
+      const sectionWorks = document.querySelector(".gallery-admin");
+      const figureElement = document.createElement("figure");
+      figureElement.classList.add("divAdmin");
+      const imageElement = document.createElement("img");
+      imageElement.src = data.imageUrl;
+      imageElement.crossOrigin = "anonymous";
+      const nomElement = document.createElement("figcaption");
+      nomElement.innerText = "éditer";
+      figureElement.appendChild(imageElement);
+      figureElement.appendChild(nomElement);
+      sectionWorks.appendChild(figureElement);
+  })
+}
 fetchWork();
 
 // vérification token utilisateur connecté
 
-function userLogged()
+function userLogging()
 {
-  // let cbaState = document.getElementsByClassName("cba-admin");
+  
     if (sessionStorage.getItem("token") == "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY3NTcwNTU2MCwiZXhwIjoxNjc1NzkxOTYwfQ.ofJF-UcRPInvrE_yOPzySON0h1Pc7v4xUWOxS18-Xww"){
       // cbaState.className.replace("cba-admin-visible");
       document.getElementById("cba-admin1").className = "cba-admin-visible";
@@ -86,11 +106,66 @@ function userLogged()
       document.getElementById("cba-admin3").className = "cba-admin-visible";
     }
     else{
-      console.log("Utilisateur non connecté")
+      console.log("Vous n'êtes pas connecté(e)")
     } 
 }
 
-userLogged();
+// let userStateLogin = true;
+userLogging();
+
+// fonctions ouvrir/fermer modale
+
+let modal = null
+const focusableSelector = 'h2, button'
+let focusables = []
+
+const openModal = function(e) {
+  modal = document.getElementById("modal-gallery")
+  focusables = Array.from(modal.querySelectorAll(focusableSelector))
+  focusables[0].focus()
+  modal.style.display = null
+  modal.removeAttribute('aria-hidden')
+  modal.setAttribute('aria-model', 'true')
+  fetchWorkAdmin()
+}
+
+const closeModal = function (e) {
+  if (modal === null) return
+  modal.style.display = 'none'
+  modal.setAttribute('aria-hidden', 'true')
+  modal.removeAttribute('aria-model')
+  modal = null
+}
+
+
+// element d'accessibilité (tab, esc)
+const focusInModal = function (e) {
+  e.preventDefault()
+  let index = focusables.findIndex(f => f === modal.querySelector(':focus'))
+  if (e.shiftKey === true) {
+    index--
+  } else {
+    index++
+  }
+  
+  if (index >= focusables.length){
+    index = 0
+  }
+  if (index < 0) {
+    index = focusables.length - 1
+  }
+  focusables[index].focus()
+}
+
+window.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape' || e.key === 'Esc'){
+    closeModal(e)
+  }
+  if (e.key === 'Tab' && modal !== null){
+    focusInModal(e)
+  }
+})
+
 
 
 

@@ -104,11 +104,12 @@ li:hover {
 }
 
 .cba-admin{
-	display: none;
+	visibility: hidden;
+	display: inline-block;	
 }
 
-.cba-admin-visible
-{
+.cba-admin-visible{
+	visibility: visible;
 	display: inline-block;
 }
 
@@ -120,12 +121,12 @@ li:hover {
 	flex: 1
 }
 
-figure .cba-admin{
-	margin: 1rem 1rem 1rem 3rem;
+#cba-admin1{
+	margin: 1rem 1rem 1rem 3.6rem;
 }
 
 
-article .cba-admin{
+#cba-admin2{
 	padding: 0rem 0rem 3rem 0rem;
 }
 
@@ -145,15 +146,86 @@ article .cba-admin{
 #introduction p {
 	margin-bottom: 0.5em;
 }
+
 #portfolio h2 {
+	display: inline-block;
 	text-align: center;
 	margin-bottom: 1em;
 }
 
+.projet-header-flex{
+	display: flex;
+	display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: baseline;
+}
+
+#cba-admin3{
+	margin: 1em 1em 1em 1em;
+}
 /* button */
 #btnFilters{
 	text-align: center;
     padding: 20px 0 51px 0;
+}
+
+.modale-gallery{
+	position: fixed;
+    top: 0;
+    left: 0;
+    width: 630px;
+    height: 731px;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    margin-top: 82px;
+    margin-left: 400px;
+	text-align: center;
+	
+}
+
+#close-modal{
+	display: block;
+    float: right;
+	padding-top: 10px;
+}
+
+#titlemodale{
+	padding-top: 60px;
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 30px;
+}
+
+.modale-wrapper{
+	overflow: auto;
+	width: 600px;
+	max-width: calc(50vw - 20px);
+	/* max-height: calc(50vh - 20px); */
+	padding: 20px;
+	background-color: white;
+}
+
+.gallery-admin {
+	grid-row-gap: 10px;
+	padding: 46px 0px 67px 0px;
+	margin: auto;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	width: 75%;
+	border-bottom:1px solid #B3B3B3;
+}
+
+.modale-wrapper input{
+	padding: 10px 20px;
+}
+
+.gallery-admin img{
+	width: 79px;
+    height: 102px;
 }
 
 .gallery {
@@ -172,7 +244,7 @@ article .cba-admin{
   /* Style the buttons */
   .btn {
 	outline: none;
-	padding: 12px 16px;
+	padding: 9px 30px;
 	border: 1px solid #1D6154;
 	border-radius: 60px;
 	cursor: pointer;
@@ -190,22 +262,25 @@ article .cba-admin{
   }
   /* fin button*/
 
-.gallery {
-	width: 100%;
+.gallery, .gallery-admin {
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
+}
+.gallery{
 	grid-column-gap: 20px;
 	grid-row-gap: 20px;
+	grid-template-columns: 1fr 1fr 1fr;
+	width: 100%;
 }
 
 .gallery img {
 	width: 100%;
-
 }
+
 #contact {
 	width: 50%;
 margin: auto;
 }
+
 #contact > * {
 	text-align: center;
 

@@ -18,11 +18,10 @@ async function authentification(){
       });
       
       if(response.status == 200){
-        alert('Success');
         sessionStorage.setItem("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY3NTcwNTU2MCwiZXhwIjoxNjc1NzkxOTYwfQ.ofJF-UcRPInvrE_yOPzySON0h1Pc7v4xUWOxS18-Xww");
         window.location = "index.html";
       } else{
-        alert('fail')
+        document.getElementById("password-false").className = "password-false-display";
       };
       
 }
