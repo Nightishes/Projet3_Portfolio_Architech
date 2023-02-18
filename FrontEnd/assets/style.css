@@ -103,6 +103,30 @@ li:hover {
 	color: #B1663C;
 }
 
+
+#cba-admin-header{
+	background-color: black;
+	display: flex;
+	width: 100%;
+	align-items: center;
+    justify-content: center;
+	gap: 21px;
+	color: white;
+}
+
+#cba-admin-header input{
+	padding: 11px 11px;
+	margin: 11px 22px;
+	color: black;
+	background-color: white;
+	font-family: 'Work Sans';
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 16px;
+	text-align: center;
+	width: 200px;
+}
+
 .cba-admin{
 	visibility: hidden;
 	display: inline-block;	
@@ -115,7 +139,7 @@ li:hover {
 
 #introduction {
 	display: flex;
-	align-items: center;
+    justify-content: center;
 }
 #introduction figure {	
 	flex: 1
@@ -127,8 +151,9 @@ li:hover {
 
 
 #cba-admin2{
-	padding: 0rem 0rem 3rem 0rem;
+	padding: 1rem 0rem 1rem 0rem;
 }
+
 
 #introduction img {
 	display: block;
@@ -138,6 +163,10 @@ li:hover {
 
 #introduction article {
 	flex: 1
+}
+
+.introduction-paragraphes{
+	margin-right: 175px;
 }
 #introduction h2 {
 	margin-bottom: 1em;
@@ -174,25 +203,54 @@ li:hover {
 	position: fixed;
     top: 0;
     left: 0;
-    width: 630px;
-    height: 731px;
+	width: 100%;
+	height: 100%;
     background: rgba(0, 0, 0, 0.8);
     display: flex;
     align-content: center;
     justify-content: center;
-    margin-top: 82px;
-    margin-left: 400px;
 	text-align: center;
-	
 }
 
-#close-modal{
+.close-modal{
 	display: block;
     float: right;
-	padding-top: 10px;
+	margin-top: 1em;
+    margin-right: 1em;
 }
 
-#titlemodale{
+.divAdmin{
+	position: relative;
+}
+
+.divAdmin img{
+	position: relative;
+	z-index: 10;
+}
+
+.divAdmin button{
+	position: relative;
+    z-index: 10;
+    width: 17px;
+    height: 17px;
+    bottom: 117px;
+    left: 29px;
+}
+
+.binDelete img {
+	width: 17px!important;
+	height: 17px!important;
+	right: 8px;
+	bottom: 3px;
+}
+.transition-wrapper{
+	display: block;
+    float: left;
+	margin-top: 1em;
+    margin-left: 1em;
+}
+
+.modale-gallery h2{
 	padding-top: 60px;
     font-family: 'Work Sans';
     font-style: normal;
@@ -202,36 +260,96 @@ li:hover {
 }
 
 .modale-wrapper{
+	height: 731px;
+}
+
+.modale-wrapper,
+.admin-modale-ajout{
 	overflow: auto;
-	width: 600px;
+	width: 630px;
 	max-width: calc(50vw - 20px);
-	/* max-height: calc(50vh - 20px); */
 	padding: 20px;
 	background-color: white;
+	margin-top: 10%;
+    margin-left: 10%;
+	border-radius: 25px;
+}
+
+.admin-modale-ajout{
+	height: 670px;
 }
 
 .gallery-admin {
 	grid-row-gap: 10px;
-	padding: 46px 0px 67px 0px;
 	margin: auto;
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 	width: 75%;
+	padding: 46px 0px 67px 0px;
+}
+
+.carre-input-file{
+	border: 2px solid #E8F1F7;
+    border-radius: 3px;
+	padding: 22px 0 19px 0;
+    margin-bottom: 30px;
+	background-color: #E8F1F7;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+    align-items: center;
+}
+
+.form-div form,
+.gallery-admin{
 	border-bottom:1px solid #B3B3B3;
 }
 
-.modale-wrapper input{
+.form-div{
+	padding-bottom: 47px;
+}
+
+form label{
+	margin-bottom: 10px;
+	margin-top: 20px;
+}
+
+.gallery-admin-upload{
+	padding: 0px 105px 0px 105px;
+}
+
+.gallery-admin figcaption{
+	text-align: left;
+    margin-left: 0.5em;
+}
+
+.modale-wrapper input,
+.admin-modale-ajout input,
+.admin-modale-ajout select{
 	padding: 10px 20px;
 }
 
+
+.admin-modale-ajout img{
+	overflow: hidden;
+	width: 58px;
+	height: 58px;
+}
+#file-submit{
+	background: #CBD6DC;
+	border-radius: 50px;	
+	margin-bottom: 7px;
+	margin-top: 15px;
+}
+
+#validation-ajout-photo{
+	background: #A7A7A7;
+	border-radius: 60px;
+}
 .gallery-admin img{
 	width: 79px;
     height: 102px;
 }
 
-.gallery {
-	overflow: hidden;
-  }
-  
   .filterDiv {
 	display: none; /* Hidden by default */
   }
@@ -265,11 +383,18 @@ li:hover {
 .gallery, .gallery-admin {
 	display: grid;
 }
+
 .gallery{
 	grid-column-gap: 20px;
 	grid-row-gap: 20px;
 	grid-template-columns: 1fr 1fr 1fr;
 	width: 100%;
+	grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 95%;
+    margin: 0px 0 0 53px;
+	overflow: hidden;
 }
 
 .gallery img {
@@ -278,21 +403,26 @@ li:hover {
 
 #contact {
 	width: 50%;
-margin: auto;
+	margin: auto;
 }
 
-#contact > * {
+#contact  {
 	text-align: center;
 
 }
 #contact h2{
 	margin-bottom: 20px;
 }
-#contact form {
+
+form, .contact-form{
 	text-align: left;
-	margin-top:30px;
 	display: flex;
 	flex-direction: column;
+}
+
+.contact-form{
+	margin-top:30px;
+	text-align: left;	
 }
 
 #contact input {

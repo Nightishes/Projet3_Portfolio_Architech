@@ -1,5 +1,27 @@
+
+
 const apiWork = "http://localhost:5678/api/works";
 
+
+// vérification token utilisateur connecté
+function userLogging()
+{
+    if (!sessionStorage.getItem("token")){
+      // cbaState.className.replace("cba-admin-visible");
+      console.log("Vous n'êtes pas connecté(e)")
+    }
+    else{
+      document.getElementById("cba-admin1").className = "cba-admin-visible";
+      document.getElementById("cba-admin2").className = "cba-admin-visible";
+      document.getElementById("cba-admin3").className = "cba-admin-visible";
+      document.getElementById("cba-admin-header").className = "cba-admin-visible";
+      filterAdmin = document.getElementById("btnFilters");
+      filterAdmin.style.display ='none';
+    } 
+}
+
+// let userStateLogin = true;
+userLogging();
 
 // Application bouton
 filterSelection("all")
@@ -84,34 +106,74 @@ async function fetchWorkAdmin(){
       figureElement.classList.add("divAdmin");
       const imageElement = document.createElement("img");
       imageElement.src = data.imageUrl;
+      imageElement.classList.add("adminImage", data.categoryId);
       imageElement.crossOrigin = "anonymous";
+      const deleteButton = document.createElement("button")
+      const binImg = document.createElement("img");
+      binImg.src = 'assets/icons/bin-svgrepo-com.svg';
+      deleteButton.classList.add("binDelete");
+      deleteButton.setAttribute("id",  data.id)
+      deleteButton.setAttribute("onclick","deleteWork(this.id);");
+      deleteButton.setAttribute("data-position", data.id)
+      // binImg.crossOrigin = "anonymous";
       const nomElement = document.createElement("figcaption");
       nomElement.innerText = "éditer";
       figureElement.appendChild(imageElement);
       figureElement.appendChild(nomElement);
+      figureElement.appendChild(deleteButton)
+      deleteButton.appendChild(binImg);
       sectionWorks.appendChild(figureElement);
   })
 }
 fetchWork();
+fetchWorkAdmin();
 
-// vérification token utilisateur connecté
 
-function userLogging()
-{
+//suppression travaux 
+
+async function deleteWork(clicked_id){
+    console.log(clicked_id);  
+    let token = sessionStorage.getItem("token");
+    let apiWorkDelete = apiWork + "/" + clicked_id;
+    let responseDelete = await fetch(apiWorkDelete, {
+      method: 'DELETE',
+      headers: {
+         'Content-Type': "application/json;charset=utf-8",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    console.log(responseDelete);
+    window.location.reload()
   
-    if (sessionStorage.getItem("token") == "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY3NTcwNTU2MCwiZXhwIjoxNjc1NzkxOTYwfQ.ofJF-UcRPInvrE_yOPzySON0h1Pc7v4xUWOxS18-Xww"){
-      // cbaState.className.replace("cba-admin-visible");
-      document.getElementById("cba-admin1").className = "cba-admin-visible";
-      document.getElementById("cba-admin2").className = "cba-admin-visible";
-      document.getElementById("cba-admin3").className = "cba-admin-visible";
-    }
-    else{
-      console.log("Vous n'êtes pas connecté(e)")
-    } 
 }
 
-// let userStateLogin = true;
-userLogging();
+//ajout travaux
+formSubmit.onsubmit = async (e) => {
+  e.preventDefault();
+  const formData = new FormData(formSubmit) 
+  const fileField = document.querySelector('input[type="file"]');
+  formData.append('title', document.getElementById('titreWorkAdmin').textContent)
+  formData.append('imageUrl', fileField.files[0])
+  formData.append('categoryId',document.getElementById('categorieWorkAdmin').value)
+  // formData.append('userId','')
+  console.log(formData)
+  let token = sessionStorage.getItem("token")
+  let responseAdd = await fetch(apiWork, {
+              method: 'POST',
+              body : JSON.stringify(formData),
+              headers: {
+                //  'Content-Type': "application/json;charset=utf-8",
+                Authorization: `Bearer ${token}`,
+              },
+            }); 
+  let result = await responseAdd.json();
+  console.log(formSubmit)
+  console.log(result.message)
+};
+
+
+
+
 
 // fonctions ouvrir/fermer modale
 
@@ -119,17 +181,16 @@ let modal = null
 const focusableSelector = 'h2, button'
 let focusables = []
 
-const openModal = function(e) {
+const openModal = function() {
   modal = document.getElementById("modal-gallery")
   focusables = Array.from(modal.querySelectorAll(focusableSelector))
   focusables[0].focus()
   modal.style.display = null
   modal.removeAttribute('aria-hidden')
   modal.setAttribute('aria-model', 'true')
-  fetchWorkAdmin()
 }
 
-const closeModal = function (e) {
+const closeModal = function () {
   if (modal === null) return
   modal.style.display = 'none'
   modal.setAttribute('aria-hidden', 'true')
@@ -167,5 +228,19 @@ window.addEventListener('keydown', function (e) {
 })
 
 
+// transition entre gallerie admin et ajout admin d'image
 
+const openInputUpload = function () {
+  wrapper = document.getElementById("modale-wrapper");
+  uploadPage = document.getElementById('admin-modale-ajout')
+  wrapper.style.display = 'none'
+  uploadPage.style.display = null
+}
+
+const backWrapperSelection = function(){
+  wrapper = document.getElementById("modale-wrapper");
+  uploadPage = document.getElementById('admin-modale-ajout')
+  uploadPage.style.display = 'none'
+  wrapper.style.display = null
+}
 

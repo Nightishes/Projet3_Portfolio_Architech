@@ -18,8 +18,11 @@ async function authentification(){
       });
       
       if(response.status == 200){
-        sessionStorage.setItem("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY3NTcwNTU2MCwiZXhwIjoxNjc1NzkxOTYwfQ.ofJF-UcRPInvrE_yOPzySON0h1Pc7v4xUWOxS18-Xww");
+        const token = await response.json();
+        sessionStorage.setItem("token", token.token);
+        // document.cookie = "access_token = []";
         window.location = "index.html";
+        //cookie secure + fonction globale (?)
       } else{
         document.getElementById("password-false").className = "password-false-display";
       };
