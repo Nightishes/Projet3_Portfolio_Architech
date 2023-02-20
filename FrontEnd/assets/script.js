@@ -99,7 +99,6 @@ async function fetchWorkAdmin(){
   const response = await fetch(apiWork);
   const json = await response.json();
   console.log(json);
-
   json.forEach(data => {
       const sectionWorks = document.querySelector(".gallery-admin");
       const figureElement = document.createElement("figure");
@@ -114,8 +113,6 @@ async function fetchWorkAdmin(){
       deleteButton.classList.add("binDelete");
       deleteButton.setAttribute("id",  data.id)
       deleteButton.setAttribute("onclick","deleteWork(this.id);");
-      deleteButton.setAttribute("data-position", data.id)
-      // binImg.crossOrigin = "anonymous";
       const nomElement = document.createElement("figcaption");
       nomElement.innerText = "éditer";
       figureElement.appendChild(imageElement);
@@ -129,6 +126,18 @@ fetchWork();
 fetchWorkAdmin();
 
 
+// Refresh the galleries
+
+function refreshWork(){
+  const galleryAdmin = document.getElementsByClassName('divAdmin');
+  while(galleryAdmin.length > 0){
+    galleryAdmin[0].parentNode.removeChild(galleryAdmin[0]);
+  }
+  const galleryWork = document.getElementsByClassName('filterDiv');
+  while(galleryWork.length > 0){
+    galleryWork[0].parentNode.removeChild(galleryWork[0]);
+  }
+}
 //suppression travaux 
 
 async function deleteWork(clicked_id){
@@ -143,18 +152,30 @@ async function deleteWork(clicked_id){
       },
     });
     console.log(responseDelete);
-    window.location.reload()
-  
+    refreshWork();
+    fetchWork();
+    fetchWorkAdmin();
 }
 
 //ajout travaux
 formSubmit.onsubmit = async (e) => {
   e.preventDefault();
   const formData = new FormData(formSubmit) 
-  const fileField = document.querySelector('input[type="file"]');
-  formData.append('title', document.getElementById('titreWorkAdmin').textContent)
+  const fileField = document.querySelector('#fileSubmit');
+
+  let workId = document.getElementsByClassName('filterDiv').length;
+  workId++;
+  const titleContent = document.getElementById('titreWorkAdmin').value;
+  const categoryId = document.getElementById('categorieWorkAdmin').value;
   formData.append('imageUrl', fileField.files[0])
-  formData.append('categoryId',document.getElementById('categorieWorkAdmin').value)
+  console.log(fileField.files);
+  formData.append('id', workId)
+  console.log(workId);
+  formData.append('title', titleContent)
+  console.log(titleContent);
+  formData.append('categoryId', categoryId)
+  console.log(categoryId);
+  formData.append('userId', '1')
   // formData.append('userId','')
   console.log(formData)
   let token = sessionStorage.getItem("token")
