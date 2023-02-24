@@ -76,7 +76,9 @@
 		<aside id="modal-gallery" class="modale-gallery" aria-hidden="true" role="dialog" aria-labelledby="titlemodale" style="display:none;">
 			<div class="modale-wrapper" id="modale-wrapper">
 				<bouton class ="close-modal" onclick="closeModal()"><i class="fa-solid fa-x"></i></bouton>
+				<!-- if connected > open/close  -->
 				<h2 id="titlemodale">Galerie photo</h2>
+				<!-- gallery admin . append -->
 				<div class="gallery-admin">
 				</div>
 				<input type="submit" value="Ajoutez une photo" id="admin-ajout-travail" onclick="openInputUpload()">
@@ -94,13 +96,13 @@
 						<div class="carre-input-file">
 							<img src="../FrontEnd/assets/icons/landscape-svgrepo-com.svg" alt="landscape-svgrepo-com">
 							<label for="fileSubmit">+ Ajoutez Photo</label>
-							<input type="file" accept="image/png, image/jpeg" id="fileSubmit">
+							<input type="file" accept="image/png, image/jpeg" id="fileSubmit" name="image">
 							<p>jpg, png : 4mo max</p>
 						</div>	
 							<label for="titre">Titre</label>
-							<input required type="text" name="titre" id="titreWorkAdmin">
-							<label for="categorie">Catégorie</label>
-							<select required name="categorie" id="categorieWorkAdmin">
+							<input required type="text" name="title" id="titreWorkAdmin">
+							<label for="category">Catégorie</label>
+							<select required name="category" id="categorieWorkAdmin">
 								<option value=""></option>
 								<option value="1">Objets</option>
 								<option value="2">Appartements</option>

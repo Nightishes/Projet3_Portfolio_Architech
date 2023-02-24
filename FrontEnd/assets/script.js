@@ -3,9 +3,8 @@
 const apiWork = "http://localhost:5678/api/works";
 
 
-// vérification token utilisateur connecté
-function userLogging()
-{
+// vérification token utilisateur connecté --> changer pour créer dynamiquement
+function userLogging(){
     if (!sessionStorage.getItem("token")){
       // cbaState.className.replace("cba-admin-visible");
       console.log("Vous n'êtes pas connecté(e)")
@@ -25,7 +24,7 @@ userLogging();
 
 // Application bouton
 filterSelection("all")
-function filterSelection(c) {
+function filterSelection(c){
   var x, i;
   x = document.getElementsByClassName("filterDiv");
   if (c == "all") c = "";
@@ -81,6 +80,7 @@ async function fetchWork(){
 
     json.forEach(data => {
         const sectionWorks = document.querySelector(".gallery");
+        // extrapoler la fonction 
         const figureElement = document.createElement("figure");
         figureElement.classList.add("filterDiv", data.categoryId, "show");
         const imageElement = document.createElement("img");
@@ -138,8 +138,8 @@ function refreshWork(){
     galleryWork[0].parentNode.removeChild(galleryWork[0]);
   }
 }
-//suppression travaux 
 
+//suppression travaux 
 async function deleteWork(clicked_id){
     console.log(clicked_id);  
     let token = sessionStorage.getItem("token");
@@ -156,44 +156,24 @@ async function deleteWork(clicked_id){
     fetchWork();
     fetchWorkAdmin();
 }
+formSubmit = document.getElementById("formSubmit");
 
 //ajout travaux
 formSubmit.onsubmit = async (e) => {
   e.preventDefault();
   const formData = new FormData(formSubmit) 
-  const fileField = document.querySelector('#fileSubmit');
-
-  let workId = document.getElementsByClassName('filterDiv').length;
-  workId++;
-  const titleContent = document.getElementById('titreWorkAdmin').value;
-  const categoryId = document.getElementById('categorieWorkAdmin').value;
-  formData.append('imageUrl', fileField.files[0])
-  console.log(fileField.files);
-  formData.append('id', workId)
-  console.log(workId);
-  formData.append('title', titleContent)
-  console.log(titleContent);
-  formData.append('categoryId', categoryId)
-  console.log(categoryId);
-  formData.append('userId', '1')
-  // formData.append('userId','')
-  console.log(formData)
+ 
   let token = sessionStorage.getItem("token")
   let responseAdd = await fetch(apiWork, {
               method: 'POST',
-              body : JSON.stringify(formData),
+              body : formData,
               headers: {
-                //  'Content-Type': "application/json;charset=utf-8",
                 Authorization: `Bearer ${token}`,
               },
             }); 
   let result = await responseAdd.json();
-  console.log(formSubmit)
-  console.log(result.message)
+
 };
-
-
-
 
 
 // fonctions ouvrir/fermer modale
@@ -211,7 +191,7 @@ const openModal = function() {
   modal.setAttribute('aria-model', 'true')
 }
 
-const closeModal = function () {
+const closeModal = function (){
   if (modal === null) return
   modal.style.display = 'none'
   modal.setAttribute('aria-hidden', 'true')

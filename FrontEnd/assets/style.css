@@ -137,6 +137,7 @@ li:hover {
 	display: inline-block;
 }
 
+/* fin du header, début introduction */
 #introduction {
 	display: flex;
     justify-content: center;
@@ -176,6 +177,7 @@ li:hover {
 	margin-bottom: 0.5em;
 }
 
+/* fin introduction, début portfolio et modale */
 #portfolio h2 {
 	display: inline-block;
 	text-align: center;
@@ -199,6 +201,57 @@ li:hover {
     padding: 20px 0 51px 0;
 }
 
+.filterDiv {
+	display: none;  
+  }
+  
+  
+  .show {
+  	display: grid;
+  }
+  
+
+  .btn {
+	outline: none;
+	padding: 9px 30px;
+	border: 1px solid #1D6154;
+	border-radius: 60px;
+	cursor: pointer;
+  }
+  
+  .btn:hover {
+	background-color: #ddd;
+  }
+  
+
+  .btn.active {
+	background-color: #666;
+	color: white;
+  }
+  /* fin button*/
+
+  .gallery, .gallery-admin {
+	display: grid;
+}
+
+.gallery{
+	grid-column-gap: 20px;
+	grid-row-gap: 20px;
+	grid-template-columns: 1fr 1fr 1fr;
+	width: 100%;
+	grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 95%;
+    margin: 0px 0 0 53px;
+	overflow: hidden;
+}
+
+.gallery img {
+	width: 100%;
+}
+  
+/* modale spécifiquement */
 .modale-gallery{
 	position: fixed;
     top: 0;
@@ -355,56 +408,7 @@ form label{
     height: 102px;
 }
 
-  .filterDiv {
-	display: none; /* Hidden by default */
-  }
-  
-  /* The "show" class is added to the filtered elements */
-  .show {
-  	display: grid;
-  }
-  
-  /* Style the buttons */
-  .btn {
-	outline: none;
-	padding: 9px 30px;
-	border: 1px solid #1D6154;
-	border-radius: 60px;
-	cursor: pointer;
-  }
-  
-  /* Add a light grey background on mouse-over */
-  .btn:hover {
-	background-color: #ddd;
-  }
-  
-  /* Add a dark background to the active button */
-  .btn.active {
-	background-color: #666;
-	color: white;
-  }
-  /* fin button*/
-
-.gallery, .gallery-admin {
-	display: grid;
-}
-
-.gallery{
-	grid-column-gap: 20px;
-	grid-row-gap: 20px;
-	grid-template-columns: 1fr 1fr 1fr;
-	width: 100%;
-	grid-column-gap: 20px;
-    grid-row-gap: 20px;
-    grid-template-columns: 1fr 1fr 1fr;
-    width: 95%;
-    margin: 0px 0 0 53px;
-	overflow: hidden;
-}
-
-.gallery img {
-	width: 100%;
-}
+/* fin modale, début footer */
 
 #contact {
 	width: 50%;
