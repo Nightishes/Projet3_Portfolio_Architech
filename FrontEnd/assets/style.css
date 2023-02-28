@@ -92,7 +92,7 @@ nav ul {
 	display: flex;
 	align-items: center;
 	list-style-type: none;
-
+	gap: 1em;
 }
 nav li {
 	padding: 0 10px;
@@ -181,19 +181,28 @@ li:hover {
 #portfolio h2 {
 	display: inline-block;
 	text-align: center;
-	margin-bottom: 1em;
 }
 
 .projet-header-flex{
 	display: flex;
-	display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: baseline;
+	margin-bottom: 1em;
 }
 
 #cba-admin3{
 	margin: 1em 1em 1em 1em;
+    display: flex;
+    background: white;
+    border: 0;
+    align-items: flex-end;
+    gap: 4px;
+}
+
+
+#cba-admin3 img{
+	height: 18px;
 }
 /* button */
 #btnFilters{
@@ -249,6 +258,7 @@ li:hover {
 
 .gallery img {
 	width: 100%;
+	max-height: 465px;
 }
   
 /* modale spécifiquement */
@@ -281,21 +291,59 @@ li:hover {
 	z-index: 10;
 }
 
-.divAdmin button{
-	position: relative;
-    z-index: 10;
-    width: 17px;
-    height: 17px;
-    bottom: 117px;
-    left: 29px;
+.divAdmin button,
+.divAdmin .moveWork{
+	position: absolute;
+    width: 17px ;
+    height: 17px ;
+	background-color: black;
+	border: 0;
+	top: 4px;
 }
 
-.binDelete img {
+.divAdmin .binDelete{
+    right: 10px;
+	z-index: 10;
+}
+
+.divAdmin .moveWork{
+	right: 31px;
+	z-index: 11;
+}
+
+.binDelete img,
+.moveWork img {
+	filter: invert(100%);
+}
+
+.binDelete img{
 	width: 17px!important;
 	height: 17px!important;
-	right: 8px;
-	bottom: 3px;
+	right: 4px;
+	bottom: 2px;
 }
+
+.moveWork img{
+	width: 17px!important;
+	height: 11px!important;
+	top: 0;
+	right: 0;
+}
+
+.label-validation,.bouton-cba-admin2{
+	display: inline-block;
+	color: white;
+	background-color: #A7A7A7;
+	margin: 2em auto;
+	width: 180px;
+	border-radius: 60px;
+	padding: 10px 20px;
+}
+
+.bouton-cba-admin2{
+	background-color: #1D6154;
+}
+
 .transition-wrapper{
 	display: block;
     float: left;
@@ -337,29 +385,36 @@ li:hover {
 	margin: auto;
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 	width: 75%;
-	padding: 0px 0px 27px 0px;
-	grid-column-gap: 10px;
+	padding: 30px 0px 27px 0px;
+	grid-column-gap: 5px;
 }
 
 .carre-input-file{
 	border: 2px solid #E8F1F7;
     border-radius: 3px;
-	padding: 22px 0 19px 0;
-    margin-bottom: 30px;
+	padding: 22px 0 0 0;
+	height: 180px;
 	background-color: #E8F1F7;
-	margin: auto;
 	display: flex;
 	flex-direction: column;
     align-items: center;
 }
 
-#fileSubmit{
+#fileSubmit,#validation-ajout-photo, #admin-ajout-travail{
 	display: none;
 }
 
-.form-div form,
+
 .gallery-admin{
 	border-bottom:1px solid #B3B3B3;
+}
+
+.container-submit-upload{
+	border-top:1px solid #B3B3B3;
+}
+
+.title-modale{
+	margin: 0 0 1em 0;
 }
 
 .form-div{
@@ -377,21 +432,24 @@ form label{
 
 .gallery-admin figcaption{
 	text-align: left;
-    margin-left: 0.5em;
+    margin-left: 0.2em;
 }
 
 .modale-wrapper input,
 .admin-modale-ajout input,
 .admin-modale-ajout select{
-	padding: 10px 20px;
+	background: #FFFFFF;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	border: 0;
+	height: 51px;
 }
 
 
 .admin-modale-ajout img{
 	overflow: hidden;
-	width: 58px;
-	height: 58px;
+	height: 50%;
 }
+
 #file-submit{
 	background: #CBD6DC;
 	border-radius: 50px;	
@@ -399,14 +457,19 @@ form label{
 	margin-top: 15px;
 }
 
-#validation-ajout-photo{
-	background: #A7A7A7;
-	border-radius: 60px;
+
+
+
+.label-validation:valid{
+	background-color: #1D6154;
 }
+
 .gallery-admin img{
 	width: 79px;
     height: 102px;
 }
+
+
 
 /* fin modale, début footer */
 
@@ -458,6 +521,11 @@ input[type="submit"]{
 	text-align: center;
 	border-radius: 60px ;
 }
+
+
+
+
+
 
 footer nav ul {
 	display: flex;

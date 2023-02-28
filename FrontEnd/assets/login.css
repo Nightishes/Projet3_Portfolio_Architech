@@ -39,8 +39,9 @@ h2{
 
 .password-false-display{
     visibility: visible;
+    margin-top: 2em;
 }
 
 footer{
-    margin-top: 30em;
+    margin-top: 20em;
 }

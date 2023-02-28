@@ -9,7 +9,9 @@
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	<meta name="description" content="">
 	<script src="https://kit.fontawesome.com/3eb767c9de.js" crossorigin="anonymous"></script>
-	
+	<script  src="../FrontEnd/assets/script.js" defer></script>
+	<script  src="../FrontEnd/assets/modale.js" defer></script>
+	<script  src="../FrontEnd/assets/admin.js" defer></script>
 	<link rel="stylesheet" href="./assets/style.css">
 </head>
 
@@ -60,9 +62,7 @@
 		<!-- mise en place modale -->
 		<div class="projet-header-flex">
 			<h2>Mes Projets</h2>
-			<bouton class="cba-admin" id="cba-admin3" onclick="openModal()">
-				<i class="fa-regular fa-pen-to-square"></i>
-				<span>modifier</span>
+			<!-- mise en place bouton admin -->
 			</bouton>
 		</div>
 		<!-- filters, caché durant l'admin -->
@@ -77,42 +77,46 @@
 			<div class="modale-wrapper" id="modale-wrapper">
 				<bouton class ="close-modal" onclick="closeModal()"><i class="fa-solid fa-x"></i></bouton>
 				<!-- if connected > open/close  -->
-				<h2 id="titlemodale">Galerie photo</h2>
+				<h2 class="title-modale" id="titlemodale">Galerie photo</h2>
 				<!-- gallery admin . append -->
 				<div class="gallery-admin">
 				</div>
-				<input type="submit" value="Ajoutez une photo" id="admin-ajout-travail" onclick="openInputUpload()">
-				<p>Supprimer la galerie</p>
+				<label for="admin-ajout-travail" class="bouton-cba-admin2">Ajoutez une photo</label>
+				<input type="submit"  id="admin-ajout-travail" onclick="openInputUpload()">
+				<p id="suppression-gallerie">Supprimer la galerie</p>
 			</div>
 			<!-- modale part 2 : upload -->
 			<div class="admin-modale-ajout" id="admin-modale-ajout" style="display:none;">
 				<bouton class="transition-wrapper" onclick="backWrapperSelection()"><i class="fa-solid fa-arrow-left"></i></bouton>
 				<bouton class ="close-modal" onclick="closeModal()"><i class="fa-solid fa-x"></i></bouton>
-				<h2 id="titlemodale">Ajout photo</h2>
+				<h2 class="title-modale">Ajout photo</h2>
 				<div class="gallery-admin-upload" id="galleryAdminWork">
 					<!-- div spécialement pour l'upload -->
 					<div class="form-div">
 						<form action="#" method="post" id="formSubmit" enctype="multipart/form-data">
 						<div class="carre-input-file">
-							<img src="../FrontEnd/assets/icons/landscape-svgrepo-com.svg" alt="landscape-svgrepo-com">
-							<label for="fileSubmit">+ Ajoutez Photo</label>
-							<input type="file" accept="image/png, image/jpeg" id="fileSubmit" name="image">
-							<p>jpg, png : 4mo max</p>
-						</div>	
+							<img id="previewImage" src="../FrontEnd/assets/icons/landscape-svgrepo-com.svg" alt="landscape-svgrepo-com">
+							<label id="labelFileSubmit" for="fileSubmit">+ Ajoutez Photo</label>
+							<input class="requiredField" required type="file" accept="image/png, image/jpeg" id="fileSubmit" name="image" onchange="preview(event)">
+							<p id="fileDescription">jpg, png : 4mo max</p>
+						</div>
 							<label for="titre">Titre</label>
-							<input required type="text" name="title" id="titreWorkAdmin">
+							<input required type="text" name="title" id="titreWorkAdmin" class="requiredField">
 							<label for="category">Catégorie</label>
-							<select required name="category" id="categorieWorkAdmin">
+							<select  required name="category" id="categorieWorkAdmin" class="requiredField">
 								<option value=""></option>
 								<option value="1">Objets</option>
 								<option value="2">Appartements</option>
 								<option value="3">Hôtels & restaurants</option>
+							</select>
 					</div>
-					<input type="submit" value="Valider" id="validation-ajout-photo">
+					<div class="container-submit-upload">
+						<label class="label-validation"for="validation-ajout-photo">Valider</label>
+							<input type="submit" id="validation-ajout-photo">
+					</div>
 				</form>
 			</div>
 		</aside>
-		<!-- Images pas dans le bon ordre comparé à la maquette -->
 		<div class="gallery" id="galleryWork">
 		</div>
 	</section>
@@ -132,7 +136,6 @@
 		</div>
 	</section>
 </main>
-
 <footer>
 	<nav>
 		<ul>
@@ -140,6 +143,6 @@
 		</ul>
 	</nav>
 </footer>
-<script  src="../FrontEnd/assets/script.js" defer></script>
+
 </body>
 </html>
