@@ -37,7 +37,7 @@ function createNewAdminGalleryWork(data){
     imageElement.crossOrigin = "anonymous";
     const deleteButton = document.createElement("button")
     const binImg = document.createElement("img");
-    binImg.src = 'assets/icons/bin-svgrepo-com.svg';
+    binImg.src = 'assets/icons/trash-can-solid.svg';
     deleteButton.classList.add("binDelete");
     deleteButton.setAttribute("id",  data.id)
     deleteButton.setAttribute("onclick","deleteWork(this.id);");
@@ -70,7 +70,6 @@ fetchWorkAdmin();
 // suppression travaux
   async function deleteWork(clicked_id){  
     let token = document.cookie.split("; ").find((row) => row.startsWith("token="))?.split("=")[1];
-    console.log(token)
     let apiWorkDelete = apiWork + "/" + clicked_id;
     let responseDelete = await fetch(apiWorkDelete, {
       method: 'DELETE',
