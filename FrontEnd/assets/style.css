@@ -203,8 +203,11 @@ nav li {
     align-items: flex-end;
     gap: 4px;
 }
-#cba-admin3:hover{
-	cursor: context-menu;
+#cba-admin3:hover, 
+#modal-gallery button:hover,
+#modal-gallery #labelFileSubmit:hover,
+#modal-gallery .label-validation:hover,
+#modal-gallery .bouton-cba-admin2{
 	cursor:pointer;
 }
 
