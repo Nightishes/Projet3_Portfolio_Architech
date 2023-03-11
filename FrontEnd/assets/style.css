@@ -52,6 +52,7 @@ body {
 	margin:auto;
 	font-family: 'Work Sans' ;
 	font-size: 14px;
+	font-weight: 400;
 }
 header {
 	display: flex;
@@ -60,6 +61,11 @@ header {
 }
 section {
 	margin: 50px 0
+}
+
+nav li:hover{
+	color: black;
+	font-weight: 800;	
 }
 
 h1{
@@ -73,13 +79,13 @@ h1{
 
 a{
 	text-decoration: none;
+	color: black;
 }
 
 h1 > span {
 	font-family: 'Work Sans';
 	font-size:10px;
 	letter-spacing: 0.1em;
-;
 }
 
 h2{
@@ -99,14 +105,11 @@ nav li {
 	font-size: 1.2em;
 }
 
-li:hover {
-	color: #B1663C;
-}
 
 
 #cba-admin-header{
 	background-color: black;
-	display: flex;
+	display: none;
 	width: 100%;
 	align-items: center;
     justify-content: center;
@@ -245,7 +248,7 @@ li:hover {
   
 
   .btn.active {
-	background-color: #666;
+	background-color: #1D6154;
 	color: white;
   }
   /* fin button*/
@@ -272,6 +275,9 @@ li:hover {
 	max-height: 465px;
 }
   
+.gallery figcaption{
+	margin-top: 10px;
+}
 /* modale spécifiquement */
 .modale-gallery{
 	position: fixed;
@@ -336,8 +342,8 @@ li:hover {
 
 .moveWork img{
 	width: 17px!important;
-	height: 11px!important;
-	top: 0;
+	height: 13px!important;
+	top: 2px;
 	right: 0;
 }
 
@@ -415,6 +421,11 @@ li:hover {
 	display: none;
 }
 
+#labelFileSubmit{
+	background: #CBD6DC;
+	border-radius: 50px;
+	padding: 10px 33px;
+}
 
 .gallery-admin{
 	border-bottom:1px solid #B3B3B3;
@@ -454,7 +465,6 @@ form label{
 	border: 0;
 	height: 51px;
 }
-
 
 .admin-modale-ajout img{
 	overflow: hidden;

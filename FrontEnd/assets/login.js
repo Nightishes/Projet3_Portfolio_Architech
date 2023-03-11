@@ -28,7 +28,7 @@ async function authentification(){
         window.location = "index.html";
       } else{
         document.getElementById("password-false").className = "password-false-display";
-      };
+      }
 }
   
 addEventListener('submit', (event) => {

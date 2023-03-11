@@ -26,12 +26,12 @@
 	</div>
 <header>
 	<!-- header classique -->
-	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+	<a href="index.html"><h1>Sophie Bluel <span>Architecte d'intérieur</span></h1></a>
 	<nav>
 		<ul>
 			<li>projets</li>
 			<li>contact</li>
-			<li><a href="login.html">login</a></li>
+			<li class="login-html" id="loginHtml"><a href="login.html">login</a></li>
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
@@ -95,7 +95,7 @@
 					<div class="form-div">
 						<form action="#" method="post" id="formSubmit" enctype="multipart/form-data">
 						<div class="carre-input-file">
-							<img id="previewImage" src="../FrontEnd/assets/icons/landscape-svgrepo-com.svg" alt="landscape-svgrepo-com">
+							<img id="previewImage" src="../FrontEnd/assets/icons/picture-svgrepo-com 1.svg" alt="landscape-svgrepo-com">
 							<label id="labelFileSubmit" for="fileSubmit">+ Ajoutez Photo</label>
 							<input class="requiredField" required type="file" accept="image/png, image/jpeg" id="fileSubmit" name="image" onchange="preview(event)">
 							<p id="fileDescription">jpg, png : 4mo max</p>

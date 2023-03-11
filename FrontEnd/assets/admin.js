@@ -1,11 +1,16 @@
 // vérification token utilisateur connecté --> Check le cookie token
 
 function userLogging(){
+  const loginSwap = document.getElementById("loginHtml")
+  const cbaAdminHeader = document.getElementById("cba-admin-header")
+  const projetHeader = document.querySelector(".projet-header-flex");
     if (document.cookie.split(";").some((item) => item.includes("token="))){
       document.getElementById("cba-admin1").className = "cba-admin-visible";
       document.getElementById("cba-admin2").className = "cba-admin-visible";
-      document.getElementById("cba-admin-header").className = "cba-admin-visible";
-      const projetHeader = document.querySelector(".projet-header-flex");
+      loginSwap.innerHTML= "logout"
+      loginSwap.setAttribute("onclick","logout();")
+      cbaAdminHeader.className = "cba-admin-visible";
+      cbaAdminHeader.style.display = "flex"
       projetHeader.setAttribute("style", "margin-bottom:6em");
       const boutonAdminModifier = document.createElement("button");
       boutonAdminModifier.setAttribute("id",  "cba-admin3");
@@ -21,10 +26,17 @@ function userLogging(){
       filterAdmin = document.getElementById("btnFilters");
       filterAdmin.style.display ='none';
     }
+    else{
+      cbaAdminHeader.style.display = "none"
+    }
 }
 // let userStateLogin = true;
 userLogging();
 
+function logout(){
+  document.cookie = "token=;expires=Thu, 01 Jan 1970 00:00:00 GMT"
+  location.reload();
+}
 
 function createNewAdminGalleryWork(data){
     const sectionWorks = document.querySelector(".gallery-admin");
@@ -111,7 +123,7 @@ function previewDelete(){
     const labelDescription = document.querySelector("#labelFileSubmit")
     const inputZone = document.querySelector(".carre-input-file")
     const imagePreviewElement = document.querySelector("#previewImage");
-    imagePreviewElement.src = "../FrontEnd/assets/icons/landscape-svgrepo-com.svg";
+    imagePreviewElement.src = "../FrontEnd/assets/icons/picture-svgrepo-com 1.svg";
     imagePreviewElement.style.height = "50%";
     inputZone.style.padding = "22px 0 0 0";
     fileDescription.style.display ="block";
