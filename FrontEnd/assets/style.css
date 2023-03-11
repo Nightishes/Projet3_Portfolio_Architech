@@ -66,6 +66,7 @@ section {
 nav li:hover{
 	color: black;
 	font-weight: 800;	
+	cursor:pointer;
 }
 
 h1{
@@ -202,7 +203,10 @@ nav li {
     align-items: flex-end;
     gap: 4px;
 }
-
+#cba-admin3:hover{
+	cursor: context-menu;
+	cursor:pointer;
+}
 
 #cba-admin3 img{
 	height: 18px;
