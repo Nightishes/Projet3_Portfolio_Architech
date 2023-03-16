@@ -12,6 +12,24 @@ function filterSelection(c){
   }
 }
 
+const buttonCatAll = document.getElementById("button all")
+buttonCatAll.addEventListener('click', function() {
+    filterSelection(c);
+})
+const buttonCat1 = document.getElementById("button 1")
+buttonCat1.addEventListener('click', function() {
+    filterSelection(1);
+})
+
+const buttonCat2 = document.getElementById("button 2")
+buttonCat2.addEventListener('click', function() {
+    filterSelection(2);
+})
+const buttonCat3 = document.getElementById("button 3")
+buttonCat3.addEventListener('click', function() {
+    filterSelection(3);
+})
+
 // Show filtered elements
 function w3AddClass(element, name) {
   var i, arr1, arr2;

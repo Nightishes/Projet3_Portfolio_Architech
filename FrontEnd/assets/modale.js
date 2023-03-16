@@ -20,7 +20,10 @@ const openModal = function() {
     modal.setAttribute('aria-hidden', 'true')
     modal.removeAttribute('aria-model')
     modal = null
-
+    const submitButtonAdmin = document.querySelector(".label-validation")
+    submitButtonAdmin.style.backgroundColor = '#A7A7A7';
+    formSubmit.reset();
+    previewDelete();
     backWrapperSelection();
   }
   
@@ -68,7 +71,10 @@ const openModal = function() {
     uploadPage = document.getElementById('admin-modale-ajout')
     uploadPage.style.display = 'none'
     wrapper.style.display = null
+    const submitButtonAdmin = document.querySelector(".label-validation")
+    submitButtonAdmin.style.backgroundColor = '#A7A7A7';
     formSubmit.reset()
+    previewDelete()
   }
   
   

@@ -67,11 +67,12 @@
 		</div>
 		<!-- filters, caché durant l'admin -->
 		<div id="btnFilters">
-			<button class="btn active" onclick="filterSelection('all')"> Tous</button>
-			<button class="btn" onclick="filterSelection('1')"> Objets</button>
-			<button class="btn" onclick="filterSelection('2')"> Appartements</button>
-			<button class="btn" onclick="filterSelection('3')"> Hôtels & restaurants</button>
+			<button class="btn active" id="button all"> Tous</button>
+			<button class="btn" id="button 1"> Objets</button>
+			<button class="btn" id="button 2"> Appartements</button>
+			<button class="btn" id="button 3"> Hôtels & restaurants</button>
 		  </div>
+		  <!-- revoir en event listener -->
 		  <!-- modale part 1 : général -->
 		<aside id="modal-gallery" class="modale-gallery" aria-hidden="true" role="dialog" aria-labelledby="titlemodale" style="display:none;">
 			<div class="modale-wrapper" id="modale-wrapper">
@@ -97,13 +98,14 @@
 						<div class="carre-input-file">
 							<img id="previewImage" src="../FrontEnd/assets/icons/picture-svgrepo-com 1.svg" alt="landscape-svgrepo-com">
 							<label id="labelFileSubmit" for="fileSubmit">+ Ajoutez Photo</label>
-							<input class="requiredField" required type="file" accept="image/png, image/jpeg" id="fileSubmit" name="image" onchange="preview(event)">
-							<p id="fileDescription">jpg, png : 4mo max</p>
+							<input class="requiredField" value="" required type="file" accept="image/png, image/jpeg" id="fileSubmit" name="image" onchange="preview(event)"/>
+							<p id="fileDescription">jpg, png : 4mo max</p> 
+							<!-- Required + messaage d'erreur -->
 						</div>
 							<label for="titre">Titre</label>
-							<input required type="text" name="title" id="titreWorkAdmin" class="requiredField">
+							<input required value="" type="text" name="title" id="titreWorkAdmin" class="requiredField"/>
 							<label for="category">Catégorie</label>
-							<select  required name="category" id="categorieWorkAdmin" class="requiredField">
+							<select  required name="category" id="categorieWorkAdmin" class="requiredField"/>
 								<option value=""></option>
 								<option value="1">Objets</option>
 								<option value="2">Appartements</option>

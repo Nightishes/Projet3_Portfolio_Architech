@@ -144,18 +144,24 @@ formSubmit.onsubmit = async (e) => {
               },
             }); 
     const data = await responseAdd.json();
-    createNewAdminGalleryWork(data);
+    if (responseAdd.ok){
+      createNewAdminGalleryWork(data);
     createNewGalleryWork(data);
     previewDelete();
     formSubmit.reset();
-    closeModal();
+    closeModal();  
+    } else{
+      alert("Echec de l'opération, veuillez réessayer")
+    }
 };
 
 function changeColorButton(){
   const elements = document.querySelectorAll('.requiredField');
   const submitButtonAdmin = document.querySelector(".label-validation")
+  const fileSubmitCheck = document.getElementById("fileSubmit").value
+  const titleSubmitCheck = document.getElementById("titreWorkAdmin").value
   elements.forEach(element => {
-     if (element.value === "") {
+     if (element.value === "" || fileSubmitCheck === "" || titleSubmitCheck === "") {
       submitButtonAdmin.style.backgroundColor = '#A7A7A7';
      } else {
       submitButtonAdmin.style.backgroundColor = '#1D6154';
